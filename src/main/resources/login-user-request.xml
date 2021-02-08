@@ -2,8 +2,9 @@
                   xmlns:us="http://techprimers.com/spring-boot-soap-example">
     <soapenv:Header/>
     <soapenv:Body>
-        <us:getUserRequest>
-            <us:name>Martin</us:name>
-        </us:getUserRequest>
+       <us:loginUser>
+           <us:email></us:email>
+           <us:password></us:password>
+       </us:loginUser>
     </soapenv:Body>
 </soapenv:Envelope>

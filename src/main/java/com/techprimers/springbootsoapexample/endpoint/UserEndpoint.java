@@ -1,7 +1,6 @@
 package com.techprimers.springbootsoapexample.endpoint;
 
-import com.techprimers.spring_boot_soap_example.GetUserRequest;
-import com.techprimers.spring_boot_soap_example.GetUserResponse;
+import com.techprimers.spring_boot_soap_example.*;
 import com.techprimers.springbootsoapexample.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -23,5 +22,23 @@ public class UserEndpoint {
         GetUserResponse response = new GetUserResponse();
         response.setUser(userService.getUsers(request.getName()));
         return response;
+    }
+
+
+    @PayloadRoot(namespace = "http://techprimers.com/spring-boot-soap-example",
+            localPart = "registerUser")
+    @ResponsePayload
+    public RegisterUserResponse registerUser(@RequestPayload RegisterUser request) {
+        RegisterUserResponse response = new RegisterUserResponse();
+        response.setMessage(userService.registerUser(request));
+        return response;
+    }
+
+
+    @PayloadRoot(namespace = "http://techprimers.com/spring-boot-soap-example",
+            localPart = "loginUser")
+    @ResponsePayload
+    public LoginUserResponse loginUser(@RequestPayload LoginUser request) {
+        return userService.loginUserResponse(request);
     }
 }

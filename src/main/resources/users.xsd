@@ -3,6 +3,61 @@
            targetNamespace="http://techprimers.com/spring-boot-soap-example"
            elementFormDefault="qualified">
 
+
+    <!-- Register user -->
+    <xs:element name="registerUser">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userObject" type="tns:userObject"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Register user object -->
+    <xs:complexType name="userObject">
+        <xs:sequence>
+            <xs:element name="first_name" type="xs:string" />
+            <xs:element name="last_name" type="xs:string" />
+            <xs:element name="email" type="xs:string" />
+            <xs:element name="phone_number" type="xs:string" />
+            <xs:element name="password" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- Get user by email and password -->
+    <xs:element name="loginUser">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name = "email" type="xs:string"/>
+                <xs:element name = "password" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!-- login user response -->
+    <xs:element name="loginUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name= "message" type="xs:string"/>
+                <xs:element name= "userObject" type="tns:userObject"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!-- Register user response -->
+      <xs:element name="registerUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!-- Getting user request by passing the name  -->
     <xs:element name="getUserRequest">
         <xs:complexType>
             <xs:sequence>
@@ -11,6 +66,7 @@
         </xs:complexType>
     </xs:element>
 
+    <!-- user response -->
     <xs:element name="getUserResponse">
         <xs:complexType>
             <xs:sequence>
@@ -19,6 +75,8 @@
         </xs:complexType>
     </xs:element>
 
+
+    <!-- User object -->
     <xs:complexType name="user">
         <xs:sequence>
             <xs:element name="name" type="xs:string" />
@@ -26,4 +84,8 @@
             <xs:element name="salary" type="xs:double" />
         </xs:sequence>
     </xs:complexType>
+
+
+
+
 </xs:schema>

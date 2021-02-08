@@ -13,6 +13,8 @@
         </xs:complexType>
     </xs:element>
 
+
+
     <!-- Register user object -->
     <xs:complexType name="userObject">
         <xs:sequence>
